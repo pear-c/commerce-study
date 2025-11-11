@@ -1,0 +1,79 @@
+plugins {
+    id 'org.springframework.boot' version "${springBootVersion}" apply false
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}" apply false
+    id 'java'
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion(javaVersion)
+}
+
+allprojects {
+    group = projectGroup
+    version = applicationVersion
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudDependenciesVersion}"
+        }
+    }
+
+    dependencies {
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+        // ✅ Lombok 추가
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+    }
+
+    tasks.named('bootJar') {
+        enabled = false
+    }
+
+    tasks.named('jar') {
+        enabled = true
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.toVersion(javaVersion)
+    }
+
+    tasks.withType(Test) {
+        useJUnitPlatform()
+    }
+
+    tasks.register('unitTest', Test) {
+        group = 'verification'
+        useJUnitPlatform {
+            excludeTags 'develop', 'context'
+        }
+    }
+
+    tasks.register('contextTest', Test) {
+        group = 'verification'
+        useJUnitPlatform {
+            includeTags 'context'
+        }
+    }
+
+    tasks.register('developTest', Test) {
+        group = 'verification'
+        useJUnitPlatform {
+            includeTags 'develop'
+        }
+    }
+}

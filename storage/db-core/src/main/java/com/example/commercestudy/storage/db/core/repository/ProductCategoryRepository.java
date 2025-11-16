@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 public interface ProductCategoryRepository extends JpaRepository<ProductCategoryEntity, Long> {
-//    Slice<ProductCategoryEntity> findByCategoryIdAndStatus(Long categoryId, EntityStatus status, Pageable pageable);
+    Slice<ProductCategoryEntity> findByCategoryIdAndStatus(Long categoryId, EntityStatus entityStatus, Pageable pageable);
+
 //    List<ProductCategoryEntity> findByProductIdInAndStatus(Collection<Long> productIds, EntityStatus status);
 }

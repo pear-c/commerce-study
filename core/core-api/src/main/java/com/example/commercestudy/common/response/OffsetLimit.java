@@ -1,4 +1,4 @@
-package com.example.commercestudy.common;
+package com.example.commercestudy.common.response;
 
 
 import org.springframework.data.domain.PageRequest;

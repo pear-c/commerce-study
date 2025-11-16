@@ -1,4 +1,4 @@
-package com.example.commercestudy.common;
+package com.example.commercestudy.common.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,5 +9,5 @@ import java.util.List;
 @AllArgsConstructor
 public class Page<T> {
     private List<T> content;
-    private Boolean hasNext;
+    private boolean hasNext;
 }

@@ -1,7 +1,6 @@
-package com.example.commercestudy.api.product.response;
+package com.example.commercestudy.api.v1.product.response;
 
 import com.example.commercestudy.domain.vo.Product;
-import com.example.commercestudy.storage.db.core.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

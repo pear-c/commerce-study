@@ -1,8 +1,8 @@
-package com.example.commercestudy.api.product.controller;
+package com.example.commercestudy.api.v1.product.controller;
 
-import com.example.commercestudy.api.product.response.ProductResponse;
+import com.example.commercestudy.api.v1.product.response.ProductResponse;
 import com.example.commercestudy.domain.product.ProductService;
-import com.example.commercestudy.common.OffsetLimit;
+import com.example.commercestudy.common.response.OffsetLimit;
 import com.example.commercestudy.common.response.ApiResponse;
 import com.example.commercestudy.common.response.PageResponse;
 import lombok.RequiredArgsConstructor;

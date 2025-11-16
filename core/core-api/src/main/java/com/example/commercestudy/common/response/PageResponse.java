@@ -10,4 +10,8 @@ import java.util.List;
 public class PageResponse<T> {
     private List<T> contents;
     private boolean hasNext;
+
+    public static <T> PageResponse<T> of(List<T> contents, boolean hasNext) {
+        return new PageResponse<>(contents, hasNext);
+    }
 }
